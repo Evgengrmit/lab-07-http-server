@@ -58,4 +58,4 @@ target_link_libraries(tests
         )
 
 enable_testing()
-add_test(NAME unit_tests COMMAND server)
+add_test(NAME unit_tests COMMAND tests)
