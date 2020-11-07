@@ -39,7 +39,7 @@ add_executable(tests
         # TODO: enum your files and delete this comment
         ${CMAKE_CURRENT_SOURCE_DIR}/sources/Json_storage.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/sources/Suggestions_collection.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
+        #${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp
         )
 
