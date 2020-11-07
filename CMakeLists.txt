@@ -35,7 +35,7 @@ find_package(GTest CONFIG REQUIRED)
 hunter_add_package(nlohmann_json)
 find_package(nlohmann_json CONFIG REQUIRED)
 
-add_executable(server
+add_executable(tests
         # TODO: enum your files and delete this comment
         ${CMAKE_CURRENT_SOURCE_DIR}/sources/Json_storage.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/sources/Suggestions_collection.cpp
@@ -45,11 +45,11 @@ add_executable(server
 
 # TODO: change template word to project name and delete this comment
 
-target_include_directories(server
+target_include_directories(tests
         PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
         )
 # TODO: change template word to project name and delete this comment
-target_link_libraries(server
+target_link_libraries(tests
         Beast::Beast
         Boost::filesystem
         Boost::thread
