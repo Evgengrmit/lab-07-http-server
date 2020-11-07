@@ -16,7 +16,6 @@ class Json_storage {
  private:
   std::string filename_;
   json storage_;
-  mutable std::mutex mut;
 };
 
 #endif  // INCLUDE_JSON_STORAGE_HPP_

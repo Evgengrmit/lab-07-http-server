@@ -15,7 +15,6 @@ class Suggestions_collection {
 
  private:
   json suggestions_;
-  std::mutex mut;
 };
 
 #endif  // INCLUDE_SUGGESTIONS_COLLECTION_HPP_

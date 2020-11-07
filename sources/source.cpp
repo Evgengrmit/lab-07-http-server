@@ -71,7 +71,7 @@ void handle_request(http::request<Body, http::basic_fields<Allocator>>&& req,
     return send(bad_request("Hello! Bad boy/girl! Don't use GET request!!!"));
   }
 
-  // Убеждаемся, что это POST
+  // Убеждаемся, что это POST-запрос
   if (req.method() != http::verb::post && req.method() != http::verb::head) {
     return send(bad_request("Unknown HTTP-method"));
   }
