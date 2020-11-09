@@ -68,7 +68,7 @@ void handle_request(http::request<Body, http::basic_fields<Allocator>>&& req,
 
   // Первый запрос GET обернем его красиво :)
   if (req.method() == http::verb::get) {
-    return send(bad_request("Hello! Bad boy/girl! Don't use GET request!!!"));
+    return send(bad_request("Hello!"));
   }
 
   // Убеждаемся, что это POST-запрос
@@ -83,12 +83,10 @@ void handle_request(http::request<Body, http::basic_fields<Allocator>>&& req,
 
   // Парсим данные из тела запроса
   json input_body;
-  std::stringstream input_stream;
-  input_stream << req.body();
   try {
-    input_stream >> input_body;
+    input_body = json::parse(req.body());
   } catch (std::exception& e) {
-    return send(bad_request("Request must be in JSON format!"));
+    return send(bad_request(e.what()));
   }
   boost::optional<std::string> input;
   try {
@@ -194,7 +192,7 @@ void suggestion_updater(
     const std::shared_ptr<Json_storage>& storage,
     const std::shared_ptr<Suggestions_collection>& suggestions,
     const std::shared_ptr<std::timed_mutex>& mutex) {
-  using  std::chrono_literals::operator""min;
+  using std::chrono_literals::operator""min;
   for (;;) {
     // WRITE - блокировка
     mutex->lock();
@@ -250,7 +248,7 @@ int Run_server(int argc, char* argv[]) {
     return EXIT_FAILURE;
   }
 }
-// Using: ./cmake-build-debug/server 0.0.0.0 8080
+// Using: ./cmake-build-debug/tests 0.0.0.0 8080
 // int main(int argc, char* argv[]) {
-//  return Run_server(argc,argv);
+//  return Run_server(argc, argv);
 //}
